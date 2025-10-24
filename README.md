@@ -1,10 +1,10 @@
 # SilvanX.com Serverless Static Website (AWS S3 & CloudFront)
 
-## 🔗 Live Site
+🔗 Live Site
 [SilvanX.com](https://www.silvanx.com) 
 
-## 💡 Project Overview:
-This project demonstrates the deployment of a highly secure, scalable, and low-cost serverless static website for **SilvanX Technologies**. The architecture leverages core Amazon Web Services (AWS) solutions, aligning with best practices for the **AWS Solutions Architect - Associate** certification.
+💡 Project Overview:
+This project demonstrates the deployment of a highly secure, scalable, and low-cost serverless static website for SilvanX Technologies. The architecture uses core AWS solutions.
 
 Key Goals Achieved:
 1.  Serverless Hosting: Zero infrastructure to manage (no EC2 instances).
@@ -13,23 +13,23 @@ Key Goals Achieved:
 
 ---
 
-## 🛠️ AWS Architecture & Demonstrated Skills:
-| Amazon S3 | Configured as the Origin for the static website content.
-| Ensured Block Public Access is enabled for security.
-| Durability/Availability (Storage Class), Security (Access Control, Bucket Policies)
-| Amazon CloudFront | Implemented as a Content Delivery Network (CDN) to cache content at Edge Locations for high performance and low latency.
-| Origin Access Control (OAC) | Crucial Security Implementation: Used to secure the S3 bucket. CloudFront is the only entity allowed to retrieve objects from S3, ensuring the S3 bucket remains non-publicly accessible.
-| Security Best Practices, Access Management, Defense-in-Depth.
-| AWS Certificate Manager (ACM) | Provisioned a Public Certificate to enable secure communication (HTTPS) between the user and the CloudFront distribution.
-| Security (Encryption in Transit), SSL/TLS Management.
-| Amazon Route 53 | Configured the DNS record for `SilvanX.com` using an Alias Record to point to the CloudFront distribution endpoint.
-| High Availability (Alias Records), DNS Management.
-| Fully decoupled serverless and stateless web tier.
-| Architectural Design, Well-Architected Framework (Cost Optimization).
+🛠️ Core AWS Architecture & Demonstrated Skills:
+Deploys a secure, highly-available Serverless Static Website, demonstrating proficiency in key AWS SAA concepts and cloud security best practices.
+
+Skills:
+Amazon CloudFront: Used for global caching and low-latency delivery.
+Origin Access Control: Secured the S3 origin, making CloudFront the only entity authorized to retrieve content.
+Amazon S3: Configured as the non-public website Origin with Block Public Access enabled.
+Amazon Route 53: Utilized Alias Records for DNS resolution, pointing the apex domain (SilvanX.com) to the CloudFront distribution.
+AWS Certificate Manager: Provisioned SSL/TLS for mandated HTTPS.
+
+Cloud Architecture:
+Designed a fully decoupled web tier with zero infrastructure to manage.
+Prioritized Security, Performance Efficiency, and Cost Optimization.
 
 ---
 
-## ⚙️ Deployment Strategy
+⚙️ Deployment Strategy:
 The website was deployed manually via the AWS Management Console to gain hands-on experience with service configuration.
 
 Steps:
@@ -40,7 +40,10 @@ Steps:
 5.  Uploaded the website assets (HTML/CSS/JS) to the S3 bucket.
 
 ---
-Created by Catrick Lee - WGU Cybersecurity Undergrad
 
-## 📜 Credits
-* The original HTML/CSS template used for the frontend static site was the "Massively" template by **HTML5 UP**, released under the Creative Commons (CC BY 3.0) license. The focus of this repository is the AWS cloud architecture and deployment.
+Created by Cat Silvan - WGU Cybersecurity Undergrad
+
+---
+
+Credits:
+The original HTML/CSS template used for the frontend static site was the "Massively" template by **HTML5 UP**, released under the Creative Commons (CC BY 3.0) license.
