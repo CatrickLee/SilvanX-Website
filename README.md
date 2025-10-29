@@ -1,49 +1,48 @@
-# SilvanX.com Serverless Static Website (AWS S3 & CloudFront)
+# SilvanX.com: Serverless Static Website (AWS S3 & CloudFront)
 
-🔗 Live Site
-[SilvanX.com](https://www.silvanx.com) 
+## Project Overview
+This project showcases the deployment of a highly **secure**, **scalable**, and **low-cost** serverless static website for **SilvanX Technologies**.
 
-💡 Project Overview:
-This project demonstrates the deployment of a highly secure, scalable, and low-cost serverless static website for SilvanX Technologies. The architecture uses core AWS solutions.
-
-Key Goals Achieved:
-1.  Serverless Hosting: Zero infrastructure to manage (no EC2 instances).
-2.  Security: Enforced HTTPS with a custom domain. S3 content is not publicly exposed.
-3.  Performance: Global content delivery and caching via a Content Delivery Network (CDN).
+| Key Goal | AWS Feature |
+| :--- | :--- |
+| **Serverless Hosting** | No EC2 instances to manage (Zero Infrastructure). |
+| **Enhanced Security** | **Origin Access Control (OAC)** and enforced **HTTPS**. S3 bucket is not public. |
+| **Global Performance** | **CloudFront CDN** for low-latency delivery and global caching. |
 
 ---
 
-🛠️ Core AWS Architecture & Demonstrated Skills:
-Deploys a secure, highly-available Serverless Static Website, demonstrating proficiency in key AWS SAA concepts and cloud security best practices.
+## AWS Skills Demonstrated
 
-Skills:
-Amazon CloudFront: Used for global caching and low-latency delivery.
-Origin Access Control: Secured the S3 origin, making CloudFront the only entity authorized to retrieve content.
-Amazon S3: Configured as the non-public website Origin with Block Public Access enabled.
-Amazon Route 53: Utilized Alias Records for DNS resolution, pointing the apex domain (SilvanX.com) to the CloudFront distribution.
-AWS Certificate Manager: Provisioned SSL/TLS for mandated HTTPS.
+This architecture demonstrates proficiency in key **AWS Well-Architected Framework** pillars: Security, Performance Efficiency, and Cost Optimization.
 
-Cloud Architecture:
-Designed a fully decoupled web tier with zero infrastructure to manage.
-Prioritized Security, Performance Efficiency, and Cost Optimization.
+### Core Services
+* **Amazon CloudFront:** Used as the global Content Delivery Network (CDN) for caching and distribution.
+* **Origin Access Control (OAC):** Securely restricts access, ensuring CloudFront is the only entity that can retrieve content from the S3 origin.
+* **Amazon S3:** Configured as the non-public static website origin. **Block Public Access** is enabled.
+* **Amazon Route 53:** Utilized an **Alias Record** to map the apex domain (`SilvanX.com`) directly to the CloudFront Distribution.
+* **AWS Certificate Manager (ACM):** Provisioned the required SSL/TLS certificate to mandate **HTTPS**.
+* **Cross-Region Replication (CRR)** Made a Disaster Recovery bucket in different region.
+* **Storage Class One-Zone-IA (Infrequent Access)** Select low cost storage for DR Bucket.
 
 ---
 
-⚙️ Deployment Strategy:
-The website was deployed manually via the AWS Management Console to gain hands-on experience with service configuration.
+## Deployment Strategy
+The website was deployed manually via the AWS Management Console to gain deep, hands-on experience with service configuration.
 
-Steps:
-1.  Created the S3 bucket in a single region (us-east-1).
+**Steps Taken:**
+1.  Created the S3 bucket in the `us-east-1` region.
 2.  Requested and validated an SSL/TLS certificate via ACM.
-3.  Created a CloudFront Distribution, linking to the S3 bucket using Origin Access Control (OAC) for enhanced security.
-4.  Created a Hosted Zone in Route 53 and added an Alias Record to map `SilvanX.com` to the CloudFront Distribution URL.
+3.  Created a CloudFront Distribution, securing the origin with **OAC**.
+4.  Created a Hosted Zone in Route 53 and mapped the domain to the distribution using an **Alias Record**.
 5.  Uploaded the website assets (HTML/CSS/JS) to the S3 bucket.
+6.  Created new S3 bucket in `us-west-2` region.
+7.  Configured Cross-Region Replication (CRR) between the two S3 buckets.
+8.  Tested the website to ensure proper functionality and security.
+
 
 ---
 
-Created by Cat Silvan - WGU Cybersecurity Undergrad
+### **Created by Cat Silvan** - WGU Cybersecurity Undergrad
 
----
-
-Credits:
-The original HTML/CSS template used for the frontend static site was the "Massively" template by **HTML5 UP**, released under the Creative Commons (CC BY 3.0) license.
+### **Credits**
+Original HTML/CSS template by [HTML5 UP](https://html5up.net/massively), released under the Creative Commons (CC BY 3.0) license.
