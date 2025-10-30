@@ -1,0 +1,35 @@
+name: Deploy SilvanX Static Website
+
+# WHEN TO RUN: Trigger this workflow on every push to the 'main' branch
+on:
+  push:
+    branches:
+      - main
+
+# Configure job-level permissions for OIDC
+permissions:
+  id-token: write # Required for OIDC authentication
+  contents: read # Required to checkout the code
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::831660098671:role/SilvanX-Website-GitHub-Deployment-Role 
+          aws-region: us-east-1 # S3 bucket region (SilvanX.com)
+
+      - name: Deploy files to S3 (Sync)
+        run: aws s3 sync . s3://silvanx.com --delete
+        
+        # '--delete' removes files from S3 if they were deleted from the repo (optional but recommended).
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id E2FSVN8O2XJQY4 --paths "/*"
+        
