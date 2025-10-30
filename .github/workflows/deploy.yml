@@ -26,7 +26,7 @@ jobs:
           aws-region: us-east-1 # S3 bucket region (SilvanX.com)
 
       - name: Deploy files to S3 (Sync)
-        run: aws s3 sync . s3://silvanx.com --delete
+        run: aws s3 sync . s3://silvanx.com --acl bucket-owner-full-control --delete
         
         # '--delete' removes files from S3 if they were deleted from the repo (optional but recommended).
 
