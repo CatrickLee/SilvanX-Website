@@ -22,14 +22,18 @@ jobs:
       - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::831660098671:role/SilvanX-Website-GitHub-Deployment-Role 
-          aws-region: us-east-1 # S3 bucket region (SilvanX.com)
+          # ✅ SECURE: Replacing hardcoded ARN with the GH_OIDC_ROLE_ARN secret
+          role-to-assume: ${{ secrets.GH_OIDC_ROLE_ARN }} 
+          
+          # ✅ SECURE: Replacing hardcoded region with the AWS_REGION secret
+          aws-region: ${{ secrets.AWS_REGION }} 
 
       - name: Deploy files to S3 (Sync)
-        run: aws s3 sync . s3://silvanx.com --acl bucket-owner-full-control --delete
+        # ✅ SECURE: Replacing hardcoded bucket name with the S3_BUCKET_NAME secret
+        run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --acl bucket-owner-full-control --delete
         
-        # '--delete' removes files from S3 if they were deleted from the repo (optional but recommended).
+        # '--delete' removes files from S3 if they were deleted from the repo.
 
       - name: Invalidate CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id E2FSVN8O2XJQY4 --paths "/*"
-        
+        # ✅ SECURE: Replacing hardcoded Distribution ID with the CF_DISTRIBUTION_ID secret
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} --paths "/*"
