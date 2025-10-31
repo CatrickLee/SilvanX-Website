@@ -25,15 +25,15 @@ The goal was to provide a single, global endpoint (`https://www.silvanx.com/`) w
 
 **Cross-Region Replication (CRR)** setup, ensuring data moves from primary bucket in **US East (N. Virginia) us-east-1** to your DR bucket in **US West (Oregon) us-west-2**.
 
-![MRAP One-Way Replication from US-East-1 to US-West-2](Images/MRAP Replication 1.png)
+![MRAP One-Way Replication from US-East-1 to US-West-2](images/mrap-replication-1.png)
 
 A temporary configuration was tested with both regions set to **Active**.
 
-![MRAP Active/Active Failover Configuration](Images/MRAP Failover 1.png)
+![MRAP Active/Active Failover Configuration](images/mrap-failover-1.png)
 
 Configured for **Active/Passive** routing, with **US East (N. Virginia) us-east-1** as **Active** and **US West (Oregon) us-west-2** as **Passive**.
 
-![MRAP Active/Passive Failover Configuration](Images/MRAP Failover 2.png)
+![MRAP Active/Passive Failover Configuration](images/mrap-failover-2.png)
 
 ---
 
