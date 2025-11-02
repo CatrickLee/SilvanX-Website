@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      # Update 1: ADDED PATH FILTER
+      # Only trigger if files in the SilvanX_Website directory are changed
+      - 'SilvanX_Website/**' 
 
 # Configure job-level permissions for OIDC
 permissions:
@@ -30,8 +34,9 @@ jobs:
 
       - name: Deploy files to S3 (Sync)
         # ✅ SECURE: Replacing hardcoded bucket name with the S3_BUCKET_NAME secret
-        run: aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --acl bucket-owner-full-control --delete
-        
+        run: aws s3 sync SilvanX_Website/ s3://${{ secrets.S3_BUCKET_NAME }} --acl bucket-owner-full-control --delete
+        # Update 2: UPDATED SYNC COMMAND SOURCE
+        # '--acl bucket-owner-full-control' ensures the bucket owner has full control over the uploaded files.
         # '--delete' removes files from S3 if they were deleted from the repo.
 
       - name: Invalidate CloudFront Cache
