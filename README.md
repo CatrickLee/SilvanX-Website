@@ -38,6 +38,7 @@ The website was deployed manually via the AWS Management Console to gain deep, h
 6.  Created new S3 bucket in `us-west-2` region.
 7.  Configured Cross-Region Replication (CRR) between the two S3 buckets.
 8.  Tested the website to ensure proper functionality and security.
+9.  Added a CI/CD auto deployment from github to my SilvanX.com AWS S3 bucket.
 
 
 ---
